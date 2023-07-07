@@ -195,7 +195,8 @@ def main(args):
         test_stats, coco_evaluator = evaluate(model, criterion, postprocessors,
                                               data_loader_val, base_ds, device, args.output_dir)
         if args.output_dir:
-            utils.save_on_master(coco_evaluator.coco_eval["bbox"].eval, output_dir / "eval.pth")
+            utils.save_on_master(coco_evaluator.coco_eval["bbox"].eval, output_dir / "eval_bbox.pth") ############
+            utils.save_on_master(coco_evaluator.coco_eval["segm"].eval, output_dir / "eval_segm.pth") ###############################################segm 결과도 저장하자
         return
 
     print("Start training")
